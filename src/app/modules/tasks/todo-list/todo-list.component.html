@@ -1,0 +1,54 @@
+<div cdkDropList class="dragdrop-list" (cdkDropListDropped)="drop($event)">
+    <div class="dragdrop-box task" *ngFor="let taskTodo of tasksTodo$ | async" cdkDrag>
+        <div class="dragdrop-custom-placeholder" *cdkDragPlaceholder></div>
+
+        <mat-checkbox
+            color="primary"
+            (change)="makeDoneTask(taskTodo)"
+            [checked]="taskTodo.isDone">
+        </mat-checkbox>
+
+        <div class="task__content">
+            <div class="task__content-text">
+                <div>
+                    {{ taskTodo.title }}
+                </div>
+                <div class="task__date" [class.task__date--outdated]="idOutdated(taskTodo)">
+                    <mat-icon class="task__icon">date_range</mat-icon>
+                    {{ taskTodo.finishDate | date: 'dd/MM/yyyy' }}
+                </div>
+            </div>
+            <div class="task__priority mx-1"
+                [class.task__priority-icon--low]="isLowPriority(taskTodo)"
+                [class.task__priority-icon--mid]="isMidPriority(taskTodo)"
+                [class.task__priority-icon--hight]="isHightPriority(taskTodo)"
+                matTooltip="Priorytet zadania"
+            ></div>
+        </div>
+
+        <button
+            mat-icon-button
+            color="primary"
+            matTooltip="Zobacz szczegóły"
+            (click)="openDialogInfoTask(taskTodo)">
+            <mat-icon>visibility</mat-icon>
+        </button>
+
+        <button
+            mat-icon-button
+            [matMenuTriggerFor]="menu"
+            color="primary">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" xPosition="before">
+            <button mat-menu-item (click)="editTodoTask(taskTodo)">
+              <mat-icon>edit</mat-icon>
+              <span>Edytuj</span>
+            </button>
+            <button mat-menu-item (click)="confirmDialogDelTodoTask(taskTodo._id)">
+              <mat-icon>delete</mat-icon>
+              <span>Usuń</span>
+            </button>
+        </mat-menu>
+    </div>
+</div>

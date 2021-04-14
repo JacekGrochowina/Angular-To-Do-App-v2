@@ -1,0 +1,50 @@
+<div cdkDropList class="dragdrop-list" (cdkDropListDropped)="drop($event)">
+    <div class="dragdrop-box task" *ngFor="let taskDone of tasksDone$ | async" cdkDrag>
+        <div class="dragdrop-custom-placeholder" *cdkDragPlaceholder></div>
+
+        <mat-checkbox
+            color="primary"
+            (change)="makeUndoneTask(taskDone)"
+            [checked]="taskDone.isDone">
+        </mat-checkbox>
+
+        <div class="task__content">
+            <div class="task__content-text">
+                <div>
+                    {{ taskDone.title }}
+                </div>
+                <div class="task__date">
+                    <mat-icon class="task__icon">date_range</mat-icon>
+                    {{ taskDone.startDate | date: 'dd/MM/yyyy' }} - {{ taskDone.finishDate | date: 'dd/MM/yyyy' }}
+                </div>
+            </div>
+            <div class="task__priority mx-1"
+                [class.task__priority-icon--low]="isLowPriority(taskDone)"
+                [class.task__priority-icon--mid]="isMidPriority(taskDone)"
+                [class.task__priority-icon--hight]="isHightPriority(taskDone)"
+                matTooltip="Priorytet zadania"
+            ></div>
+        </div>
+
+        <button
+            mat-icon-button
+            color="primary"
+            matTooltip="Zobacz szczegóły"
+            (click)="openDialogInfoTask(taskDone)">
+            <mat-icon>visibility</mat-icon>
+        </button>
+
+        <button
+            mat-icon-button
+            [matMenuTriggerFor]="menu"
+            color="primary">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" xPosition="before">
+            <button mat-menu-item (click)="confirmDialogDelDoneTask(taskDone._id)">
+              <mat-icon>delete</mat-icon>
+              <span>Usuń</span>
+            </button>
+        </mat-menu>
+    </div>
+</div>

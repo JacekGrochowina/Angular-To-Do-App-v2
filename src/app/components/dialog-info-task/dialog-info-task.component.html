@@ -1,0 +1,39 @@
+<h2 mat-dialog-title>{{ task.title }}</h2>
+
+<div class="info-task">
+    <div class="info-task__date">
+        <mat-icon class="icon">date_range</mat-icon>
+        <span>
+            {{ task.startDate | date: 'dd/MM/yyyy' }} - 
+            <span [class.task__date--outdated]="idOutdated(task) && !task.isDone">
+                {{ task.finishDate | date: 'dd/MM/yyyy' }}
+            </span>
+        </span>
+    </div>
+
+    <div class="info-task__priority">
+        <span
+            *ngIf="isLowPriority(task)"
+            class="task__priority--low">
+        <strong>Niski</strong> priorytet zadania</span>
+        <span
+            *ngIf="isMidPriority(task)"
+            class="task__priority--mid">
+        <strong>Średni</strong> priorytet zadania</span>
+        <span
+            *ngIf="isHightPriority(task)"
+            class="task__priority--hight">
+        <strong>Wysoki</strong> priorytet zadania</span>
+    </div>
+
+    <div *ngIf="task.isDone" class="info-task__is-done">
+        <mat-icon class="icon">done</mat-icon>
+        <span>Zadanie ukończone</span>
+    </div>
+
+    <p class="info-task__decription">{{ task.description }}</p>
+
+    <mat-dialog-actions align="end">
+        <button mat-stroked-button mat-dialog-close color="primary">Zamknij</button>
+    </mat-dialog-actions>
+</div>

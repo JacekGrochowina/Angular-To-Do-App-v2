@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="jumbotron flex flex-center">
+        <h2 class="mr-2">Dodaj nowe zadanie</h2>
+        <button mat-mini-fab color="primary" (click)="openDialogAddTask()">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+
+    <div class="tasks-wrapper" *ngIf="(tasksTodo$ | async)?.length !== 0">
+        <h3 class="tasks-wrapper__title">Do zrobienia</h3>
+        <app-todo-list></app-todo-list>
+    </div>
+
+    <div class="tasks-wrapper mt-2" *ngIf="(tasksDone$ | async)?.length !== 0">
+        <h3 class="tasks-wrapper__title">Zrobione</h3>
+        <app-done-list></app-done-list>
+    </div>
+</div>

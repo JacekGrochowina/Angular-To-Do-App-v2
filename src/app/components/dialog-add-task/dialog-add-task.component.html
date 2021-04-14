@@ -1,0 +1,86 @@
+<h2 mat-dialog-title>Dodawanie nowego zadania</h2>
+
+<mat-dialog-content>
+    <form [formGroup]="addTaskForm" (ngSubmit)="onSubmit()" class="form">
+        <mat-form-field appearance="fill" class="form__row">
+            <mat-label>Treść zadania*</mat-label>
+            <input
+                cdkFocusInitial
+                matInput
+                formControlName="title"
+                placeholder="Np. Zrobić zakupy">
+            <mat-hint align="end">{{ addTaskForm.controls.title.value.length || 0 }}/80</mat-hint>
+            <mat-hint>Podaj treść zadania</mat-hint>
+            <mat-error *ngIf="addTaskForm.controls.title.value.length > 80 && !addTaskForm.controls.title.hasError('required')">
+                Treść zadania może mieć <strong>maksymalnie 80 znaków</strong>
+            </mat-error>
+            <mat-error *ngIf="addTaskForm.controls.title.value.length < 3 && !addTaskForm.controls.title.hasError('required')">
+                Treść zadania musi mieć <strong>co najmniej 3 znaki</strong>
+            </mat-error>
+            <mat-error *ngIf="addTaskForm.controls.title.hasError('required')">
+                Treść zadania <strong>jest wymagana</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form__row">
+            <mat-label>Opis zadania</mat-label>
+            <textarea
+                matInput
+                formControlName="description"
+                placeholder="Np. Wybrać się do osiedlowego sklepu, żeby zakupić niezbędne rzeczy do zrobienia ciasta"></textarea>
+            <mat-hint align="end">{{ addTaskForm.controls.description.value.length || 0 }}/255</mat-hint>
+            <mat-hint>Podaj dokładniejszy opis zadania (opcjonalne)</mat-hint>
+            <mat-error *ngIf="addTaskForm.controls.description.value.length > 255">
+                Opis zadania może mieć <strong>maksymalnie 255 znaków</strong>
+            </mat-error>
+            <mat-error *ngIf="addTaskForm.controls.description.value.length < 3">
+                Opis zadania musi mieć <strong>co najmniej 3 znaki</strong>
+            </mat-error>
+          </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form__row">
+            <mat-label>Priorytet zadania*</mat-label>
+            <mat-select matInput formControlName="priority">
+                <mat-option value="low">
+                    <span class="priority priority--low">
+                        Niski
+                    </span>
+                </mat-option>
+                <mat-option value="mid">
+                    <span class="priority priority--mid">
+                        Średni
+                    </span>
+                </mat-option>
+                <mat-option value="hight">
+                    <span class="priority priority--hight">
+                        Wysoki
+                    </span>
+                </mat-option>
+            </mat-select>
+            <mat-hint>Podaj priorytet zadania</mat-hint>
+            <mat-error *ngIf="addTaskForm.controls.priority.hasError('required')">
+                Priorytet zadania <strong>jest wymagany</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form__row">
+            <mat-label>Termin realizacji*</mat-label>
+            <input
+                matInput
+                formControlName="finishDate"
+                [matDatepicker]="picker"
+                [min]="minDate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>          
+            <mat-hint>Wybierz zakładaną datę realizacji zadania</mat-hint>
+            <mat-error *ngIf="addTaskForm.controls.finishDate.hasError('required')">
+                Termin realizacji <strong>jest wymagany</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-dialog-actions align="end">
+            <button mat-stroked-button mat-dialog-close color="primary">Anuluj</button>
+            <button mat-raised-button color="primary" [mat-dialog-close]="true" [disabled]="!addTaskForm.valid" type="submit">Dodaj</button>
+        </mat-dialog-actions>
+    </form>
+</mat-dialog-content>

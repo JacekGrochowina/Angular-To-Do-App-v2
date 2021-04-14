@@ -1,0 +1,28 @@
+.flex {
+    display: flex;
+}
+
+.flex.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+
+.m-0 {
+    margin: 0 !important;
+}
+
+.mx-1 {
+    margin: 0 10px !important;
+}
+
+.mr-1 {
+    margin: 0 10px 0 0 !important; 
+}
+
+.mr-2 {
+    margin: 0 20px 0 0 !important; 
+}
+
+.mt-2 {
+    margin: 20px 0 0 0 !important;
+}

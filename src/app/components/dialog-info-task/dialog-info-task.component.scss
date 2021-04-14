@@ -1,0 +1,56 @@
+@import '../../../styles/variables';
+
+.info-task {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.info-task__date {
+    font-size: 12px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: rgb(139, 139, 139);
+}
+
+.info-task__date > .icon {
+    width: 14px;
+    height: 14px;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.info-task__priority {
+    font-size: 12px;
+}
+
+.task__priority--low {
+    color: $color-priority-low;
+}
+
+.task__priority--mid {
+    color: $color-priority-mid;
+}
+
+.task__priority--hight {
+    color: $color-priority-hight;
+}
+
+.info-task__decription {
+    margin-top: 20px;
+}
+
+.info-task__is-done {
+    font-size: 12px;
+    color: rgb(139, 139, 139);
+    display: flex;
+    align-items: center;
+}
+
+.info-task__is-done > .icon {
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    margin-right: 5px;
+}

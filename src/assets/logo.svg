@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="130" height="auto" viewBox="0 0 691.5 207">
+  <defs>
+    <filter id="Rectangle_1" x="0" y="0" width="207" height="207" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#b0baf1"/>
+      <stop offset="1" stop-color="#3f51b5"/>
+    </linearGradient>
+  </defs>
+  <g id="todo-logo" transform="translate(2.5 -18.5)">
+    <g id="logo" transform="translate(20 40.971)">
+      <g transform="matrix(1, 0, 0, 1, -22.5, -22.47)" filter="url(#Rectangle_1)">
+        <rect id="Rectangle_1-2" data-name="Rectangle 1" width="162" height="162" rx="15" transform="translate(22.5 22.5)" fill="#fff"/>
+      </g>
+      <ellipse id="Ellipse_1" data-name="Ellipse 1" cx="54.5" cy="55.5" rx="54.5" ry="55.5" transform="translate(26 26.029)" fill="url(#linear-gradient)"/>
+      <g id="done_black_24dp" transform="translate(32.257 31.691)">
+        <path id="Path_1" data-name="Path 1" d="M0,0H98.243V98.243H0Z" fill="none"/>
+        <path id="Path_2" data-name="Path 2" d="M26.323,45.323,11.8,30.8,3.4,39.2,26.323,62.12,75.445,13l-8.4-8.4Z" transform="translate(10.518 15.655)" fill="#fff"/>
+      </g>
+    </g>
+    <text id="To_Do_App" data-name="To Do App" transform="translate(250 153)" fill="#fff" font-size="90" font-family="Poppins-Bold, Poppins" font-weight="700" letter-spacing="-0.03em"><tspan x="0" y="0">To Do App</tspan></text>
+  </g>
+</svg>

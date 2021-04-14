@@ -13,7 +13,7 @@ export const exampleTasks: Task[] = [
     {
         _id: '621bde13-4f5d-4183-a270-234f40d7d65e',
         title: 'Treść drugiego przykładowego zadania',
-        description: null,
+        description: '',
         priority: 'mid',
         finishDate: new Date(new Date().getFullYear(), new Date().getMonth()+1, new Date().getDate()+3),
         startDate: new Date(),
@@ -40,7 +40,7 @@ export const exampleTasks: Task[] = [
     {
         _id: '721bde13-4f1d-4683-a270-234f40d7d65e',
         title: 'Treść piątego przykładowego zadania',
-        description: null,
+        description: '',
         priority: 'low',
         finishDate: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()+3),
         startDate: new Date(),

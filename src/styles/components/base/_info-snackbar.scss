@@ -6,3 +6,8 @@
 .info-snackbar .mat-simple-snackbar-action {
     color: $color-priority-low;
 }
+
+.info-snackbar {
+    width: 100% !important;
+    max-width: 375px !important;
+}
